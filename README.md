@@ -1,7 +1,5 @@
-# Color_correction
-
-# DAPD Method
-Digital Adjustment of Plant Development (_DAPD_) is a method that synchronizes shoot phenotypic measurements. It uses the plant leaf number to normalizes time-series measurements, such as the projected rosette area and leaf area. This method improves accuracy by decreasing the statistical dispersion of time-series of quantitative traits _(Figure 1)_. Also, it can identify more outliers than any other central tendency technique on the non-normalized dataset. The DAPD method was written in Python programming language and presented in Juptyter notebook pages.
+# ColorBayes Bayesian color constancy 
+Our goal is to correct the local color distortion on plant phenotyping images caused by non-uniform illumination. The corrected image will show the colors of individual plants as if they were taken under the same standard illuminant (D65). This color constancy approach has two main steps. The first step is to estimate an unknown illuminant's color and spatial distribution that causes the local color distortion. For this step, it is required a training dataset (ground truth), observed image data. Also, it is used the Bayes' rule and the maximum a posteriori (MAP). The second step is to transform the observed image using the chromaticity adaptation method.
 
 
 <figure>
@@ -41,7 +39,6 @@ The time-series of phenotyping traits are normalized to an early plant developme
 
 
 # Leaf movement
-Color distortion is an inherent problem in image-based phenotyping systems that are illuminated by artificial light. This distortion is problematic when examining plants because it can cause data to be incorrectly interpreted. One of the leading causes of color distortion is the non-uniform spectral and spatial distribution of artificial light. However, color correction algorithms currently used in plant phenotyping assume that a single and uniform illuminant causes color distortion. These algorithms are consequently inadequate to correct the local color distortion caused by multiple illuminants common in plant phenotyping systems, such as fluorescent tubes and LED light arrays. We describe here a color constancy algorithm, ColorBayes, based on Bayesian inference that corrects local color distortions. The algorithm estimates the local illuminants using the Bayes' rule, the maximum a posteriori, the observed image data, and prior illuminant information. The prior is obtained from light measurements and Macbeth ColorChecker charts located on the scene.
 
 
 
