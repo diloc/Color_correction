@@ -23,7 +23,9 @@ Our methods relies on the following assumptions:
 $z_ki=l_k r_ki+w_ki$	Eq. 2 <br/>
 
 The multivariable function described in Eq. 2 can be statistically represented using the likelihood function. It is equivalent to Gaussian noise probability distribution (Eq. 3). <br/>
-$p(z_ki│l_k r_ki )=1/√(2π σ_k^2 )  exp⁡[-1/2  (z_ki-l_k r_ki )^2/(σ_k^2 )]	$ Eq. 3 <br/>
+$$
+p(z_ki│l_k r_ki )=1/√(2π σ_k^2 )  exp⁡[-1/2  (z_ki-l_k r_ki )^2/(σ_k^2 )]	
+$$ Eq. 3 <br/>
 
 - An observed image is divided into areas that correspond to individual pot areas.
 - The objects of a pot area are segmented, such as leaves and soil.
