@@ -1,4 +1,4 @@
-# ColorBayes Bayesian color constancy $ \sum_{\forall i}{x_i^{2}} $
+# ColorBayes Bayesian color constancy
 Our goal is to correct the local color distortion on plant phenotyping images caused by non-uniform illumination. The corrected image will show the colors of individual plants as if they were taken under the same standard illuminant (D65). This color constancy approach has two main steps. The first step is to estimate an unknown illuminant's color and spatial distribution that causes the local color distortion. For this step, it is required a training dataset (ground truth), observed image data. Also, it is used the Bayes' rule and the maximum a posteriori (MAP). The second step is to transform the observed image using the chromaticity adaptation method.
 
 
@@ -23,9 +23,8 @@ Our methods relies on the following assumptions:
 $z_ki=l_k r_ki+w_ki$	Eq. 2 <br/>
 
 The multivariable function described in Eq. 2 can be statistically represented using the likelihood function. It is equivalent to Gaussian noise probability distribution (Eq. 3). <br/>
-$$
-p(z_ki│l_k r_ki )=1/√(2π σ_k^2 )  exp⁡[-1/2  (z_ki-l_k r_ki )^2/(σ_k^2 )]	
-$$ Eq. 3 <br/>
+
+p(z_ki│l_k r_ki )=1/√(2π σ_k^2 )  exp⁡[-1/2  (z_ki-l_k r_ki )^2/(σ_k^2 )]	 Eq. 3 <br/>
 
 - An observed image is divided into areas that correspond to individual pot areas.
 - The objects of a pot area are segmented, such as leaves and soil.
