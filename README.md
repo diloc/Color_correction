@@ -34,6 +34,10 @@ $$ Eq. 3 <br/>
 - The illumination $(l)$ has a uniform probability distribution over a pixel class $p(L)=u$ where $u$ is constant. 
 - The illumination and the reflectance are statistically independent of each other $p(L,R)=p(L)p(R)$.
 - A pixel value z_i is a function of the reflectance r_i, illuminant l and additive Gaussian noise w_i. This noise has a mean equal to zero and a standard deviation σ. <br/>
+
+\begin{equation}
+z_i=lr_i+w_i
+\end{equation}
 $z_i=lr_i+w_i$  (Eq. 1).
 
 
