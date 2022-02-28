@@ -3,11 +3,12 @@ Our goal is to correct the local color distortion on plant phenotyping images ca
 
 
 <figure>
-  <img src="https://github.com/diloc/DAPD_Normalization/blob/master/results_Col-0.jpg">
+  <img src="https://github.com/diloc/Color_correction/blob/main/Figure_4_performance_cloth.png">
   <figcaption>
-  Figure 1: Mean and standard deviation of the non-normalized and normalized projected rosette area datasets. (a) the non-normalized datasets of Col-0 plants in experiment 1, (b) the normalized datasets of Col-0 plants in experiment 1. The light purple band indicates the standard deviation and the solid blue curve indicates the mean area.
+  Figure 1 ColorBayes Bayesian color constancy results on the green cloth dataset. (a) shows the original pot image that was locally illuminated with a red cast light, (b) shows the same pot after applying our Bayesian algorithm.
   </figcaption>
 </figure>
+
 
 ## Description
 The DAPD method uses image processing algorithms to analyze and extract plant phenotyping traits. It starts by loading RGB images and other files such as camera parameters which are used to correct the lens distortion. After, the image quality is improved by reducing the noise and correcting the color distortion. Then, the projected rosette is segmented from the pot image by removing automatically the background. Finally, phenotyping traits are obtained from the segmented image and write them in CSV files. The traits include projected rosette area, perimeter, leaf number, hull Area, radius, roundness, compactness and eccentricity _(Figure 2)_. The user can run DAPD image processing module to extract the traits (See tutorial).
