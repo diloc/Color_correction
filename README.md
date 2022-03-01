@@ -3,9 +3,9 @@ Our goal is to correct the local color distortion on plant phenotyping images ca
 
 
 <figure>
-  <img src="https://github.com/diloc/Color_correction/blob/main/Figure_4_performance_cloth.png">
+  <img src="https://github.com/diloc/Color_correction/blob/main/images/Figure_2_ColorLight_distribution4.png">
   <figcaption>
-  Figure 1 ColorBayes Bayesian color constancy results on the green cloth dataset. (a) shows the original pot image that was locally illuminated with a red cast light, (b) shows the same pot after applying our Bayesian algorithm.
+  Figure 1 Light environment characteristics in the HTPP system. (a) A top-view image capturing one hundred and forty-eight pots and twelve Macbeth ColorCheckers, illustrating non-uniform illumination. (b) Spatial distribution of the illumination color on the plant phenotyping scene. (c) Illumination color distribution on the Chromaticity diagram using the 1931 CIE colorimetric system coordinates. (d) Spectral Irradiance at (x = 20 cm and y = 20 cm) and (x = 0 cm and y = 6 cm), the wavelength range is from 325 nm to 785 nm on the horizontal axis and the spectral irradiance [μW cm-2 nm-1] on the vertical axis. Two peaks represent the primary emission LED lights at blue (450 nm) and red (630 nm) and a curve plateau between these peaks (550 - 600 nm).
   </figcaption>
 </figure>
 
