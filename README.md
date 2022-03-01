@@ -1,6 +1,6 @@
 # ColorBayes Bayesian color constancy
 
-![formula](https://render.githubusercontent.com/render/math?math=\large\f(x)=sin(x))
+
 Our goal is to correct the local color distortion on plant phenotyping images caused by non-uniform illumination. The corrected image will show the colors of individual plants as if they were taken under the same standard illuminant (D65). This color constancy approach has two main steps. The first step is to estimate an unknown illuminant's color and spatial distribution that causes the local color distortion. For this step, it is required a training dataset (ground truth), observed image data. Also, it is used the Bayes' rule and the maximum a posteriori (MAP). The second step is to transform the observed image using the chromaticity adaptation method.
 
 
@@ -16,7 +16,7 @@ Our goal is to correct the local color distortion on plant phenotyping images ca
 Our methods relies on the following assumptions:
 
 - An observed image (5105 x 3075 pixels) is made up of three independent color channels <(k = {R,G,B})> and divided into areas that correspond to individual pot areas.
-- A pixel class is assigned individually to segmented objects in a pot area such as plant and soil pixels. It means that a pixel class ![equation](Z_k)
+- A pixel class is assigned individually to segmented objects in a pot area such as plant and soil pixels. It means that a pixel class ![formula](https://render.githubusercontent.com/render/math?math=\largeL_k= \left \{ l_ki \right \})
  is a collection of pixels within the same spatial neighborhood and similar color values. The pixel value $ z_ki $ is a random variable at location $i=0,1,2,…,n$.
 - The reflectance of a pixel class is a collection of reflectance $R_k={r_ki }$, where $r_ki $ is a random variable representing the reflectance at the location $i=0,1,2,…,n$. Two adjacent reflectance are independent of each other, and the joint probability of is given by $$p(r_ki,r_kj )=p(r_ki )p(r_kj )$$. Based on the same assumption, all reflectance in a pixel class are independent events with joint probability $$p(R_k )=∏_(i=1)^n▒p(r_ki )$$.
 - The illuminant of a pixel class is a collection of illuminants $L_k={l_ki }$. However, it is assumed that the illuminant is constant for all pixels in a class, meaning,  $$l_k=l_ki and L_k={l_k }$$. Then, the probability distribution of the illuminant is uniform, $p(l_k )=u_k$, being $u_k$ a constant value. 
