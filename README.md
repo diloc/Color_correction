@@ -72,8 +72,8 @@ $$  \hat{l}_{MAP} =\underset{l}{\operatorname{argmax}}  P(L|Z) = \frac{\sum_{i=1
 ## Resources
 
 
-* Source Repository: https://github.com/diloc/Color_correction/blob/8dea8b92ac3cea5e5c198348c04a50d10c2f8adb/Color_Constancy/prior.ipynb
-
+* Source Repository (prior): https://github.com/diloc/Color_correction/blob/8dea8b92ac3cea5e5c198348c04a50d10c2f8adb/Color_Constancy/prior.ipynb
+* Source Repository (main): 
 
 ## Dependencies
 * Python (3. 7 or higher).
