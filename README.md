@@ -28,11 +28,11 @@ Our methods relies on the following assumptions:
 
 The multivariable function described in Eq. 2 can be statistically represented using the likelihood function. It is equivalent to Gaussian noise probability distribution (Eq. 3). <br/>
 
-p(z_ki│l_k r_ki )=1/√(2π σ_k^2 )  exp⁡[-1/2  (z_ki-l_k r_ki )^2/(σ_k^2 )]	 Eq. 3 <br/>
+![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/likelihood.png) Eq. 3 <br/>
 
 - An observed image is divided into areas that correspond to individual pot areas.
 - The objects of a pot area are segmented, such as leaves and soil.
-- A pixel class is assigned individually to a segmented object; for instance, the plant pixel class contains the leaves, stem, and other plant organs. A class is a collection of $n$ pixels  $Z={z_i }$, where $z_i$ is a random variable representing the pixel value at location $i=0,1,2,…,n$.
+- A pixel class is assigned individually to a segmented object; for instance, the plant pixel class contains the leaves, stem, and other plant organs. A class is a collection of n pixels ![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/pixelClass.png), where ![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/pixel.png) is a random variable representing the pixel value at location i=0,1,2,…,n.
 - The reflectance of a pixel class is a collection of reflectances $R={r_i }$, where r_i is a random variable representing the reflectance at the location $i=0,1,2,…,n$. Reflectances are independent to each other such as $p(r_i,r_j )=p(r_i )p(r_j )$. Based on the independence assumption, we have $p(R)= \sum_{i=1}^{n} p(r_i )$ 
 - The illumination $(l)$ has a uniform probability distribution over a pixel class $p(L)=u$ where $u$ is constant. 
 - The illumination and the reflectance are statistically independent of each other $p(L,R)=p(L)p(R)$.
