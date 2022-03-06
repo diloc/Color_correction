@@ -73,7 +73,7 @@ $$  \hat{l}_{MAP} =\underset{l}{\operatorname{argmax}}  P(L|Z) = \frac{\sum_{i=1
 
 
 * Source Repository (prior): https://github.com/diloc/Color_correction/blob/8dea8b92ac3cea5e5c198348c04a50d10c2f8adb/Color_Constancy/prior.ipynb
-* Source Repository (main): 
+* Source Repository (main): https://github.com/diloc/Color_correction/blob/919477408e1679f0c3c715a99ab9bff2afca433f/Color_Constancy/main.ipynb
 
 ## Dependencies
 * Python (3. 7 or higher).
