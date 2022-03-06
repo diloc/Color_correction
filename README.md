@@ -30,27 +30,6 @@ The multivariable function described in Eq. 2 can be statistically represented u
 
 ![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/likelihood.png) Eq. 3 <br/>
 
-- An observed image is divided into areas that correspond to individual pot areas.
-- The objects of a pot area are segmented, such as leaves and soil.
-- A pixel class is assigned individually to a segmented object; for instance, the plant pixel class contains the leaves, stem, and other plant organs. A class is a collection of n pixels ![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/pixelClass.png), where ![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/pixel.png) is a random variable representing the pixel value at location i=0,1,2,…,n.
-- The reflectance of a pixel class is a collection of reflectances $R={r_i }$, where r_i is a random variable representing the reflectance at the location $i=0,1,2,…,n$. Reflectances are independent to each other such as $p(r_i,r_j )=p(r_i )p(r_j )$. Based on the independence assumption, we have $p(R)= \sum_{i=1}^{n} p(r_i )$ 
-- The illumination $(l)$ has a uniform probability distribution over a pixel class $p(L)=u$ where $u$ is constant. 
-- The illumination and the reflectance are statistically independent of each other $p(L,R)=p(L)p(R)$.
-- A pixel value z_i is a function of the reflectance r_i, illuminant l and additive Gaussian noise w_i. This noise has a mean equal to zero and a standard deviation σ. <br/>
-
-\begin{equation}
-z_i=lr_i+w_i
-\end{equation}
-$z_i=lr_i+w_i$  (Eq. 1).
-
-
-Before estimating the unknown illuminant, it is necessary to define the following assumptions:
-
-
-### Likelihood: 
-The likelihood of the pixel class is given the illuminant and reflectance and follows a normal distribution. <br/>
-$$p(Z│L,R)= \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \sigma^2}}  exp⁡\biggl(-\frac{(z_i-lr_i)^2}{2\sigma^2}\biggr)$$  
-
 
 ### Priors: Reflectance & Illuminant: 
 We created an **image dataset** to get the reflectance and illuminant prior distributions. It has images of green fabric pieces on pots and Macbeth colorChecker charts. They were illuminated using D65 standard illuminant.. <br/>
