@@ -34,9 +34,9 @@ The multivariable function described in Eq. 2 can be statistically represented u
 ### Priors: Reflectance & Illuminant: 
 We created an **image dataset** to get the reflectance and illuminant prior distributions. It has images of green fabric pieces on pots and Macbeth colorChecker charts. They were illuminated using D65 standard illuminant.. <br/>
 
-$$P(R)= \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \tau^2}}  exp⁡\biggl(-\frac{(r_i-\mu)^2}{2\tau^2}\biggr)$$ <br/>
-As the illumation is uniform over a pixel class the probability distribution is given by:
-$$p(L)=u$$ <br/>
+![equation](https://github.com/diloc/Color_correction/blob/67d3eb7d24be12a07f11351454e3983ae2ba2498/equations/priorReflect.png) <br/>
+As the illumation is uniform over a pixel class the probability distribution is given by:<br/>
+![equation](https://github.com/diloc/Color_correction/blob/b99b19f530fbd06e94a81c221153e5a50614ace0/equations/priorIllum.png) <br/>
 
 ### Posterior
 It is possible to analytically calculate the posterior distribution using the Bayes' rule as the prior is a conjugate prior for the likelihood function. The posterior distribution is given by:
