@@ -20,34 +20,28 @@ Our methods relies on the following assumptions:
 - The reflectance of a pixel class is a collection of reflectance ![equation](https://github.com/diloc/Color_correction/blob/main/equations/reflectanceClass.png), where ![equation](https://github.com/diloc/Color_correction/blob/main/equations/reflect.png), is a random variable representing the reflectance at the location i=0,1,2,…,n. Two adjacent reflectance are independent of each other, and the joint probability of is given by ![equation](https://github.com/diloc/Color_correction/blob/041befc0d5f053fd72862480c8d15fc4a464f010/equations/twoReflect.png). Based on the same assumption, all reflectance in a pixel class are independent events with joint probability ![equation](https://github.com/diloc/Color_correction/blob/041befc0d5f053fd72862480c8d15fc4a464f010/equations/allReflect.png).
 - The illuminant of a pixel class is a collection of illuminants ![equation](https://github.com/diloc/Color_correction/blob/main/equations/illumClass.png),. However, it is assumed that the illuminant is constant for all pixels in a class, meaning, ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/lk_lki.png). Then, the probability distribution of the illuminant is uniform, ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/prob_illum.png), being ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/constant.png) a constant value. 
 - The illumination and the reflectance are statistically independent of each other ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/prob_refl_illum.png).
-- The value of a pixel ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/pixel.png) is a function of the reflectance ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/reflect.png), the illuminant ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/illumin.png) and the Gaussian noise w_ki with a mean equal to zero and variance ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/var_noise.png) (Eq. 2). <br/>
+- The value of a pixel ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/pixel.png) is a function of the reflectance ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/reflect.png), the illuminant ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/illumin.png) and the Gaussian noise w_ki with a mean equal to zero and variance ![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/var_noise.png) (Eq. 1). <br/>
 
 
 
-![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/pixelFunc.png)	Eq. 2 <br/>
+![equation](https://github.com/diloc/Color_correction/blob/c42493778cf3d81cb2be0e80d740012cee213f03/equations/pixelFunc.png)	              Eq. 1 <br/>
 
-The multivariable function described in Eq. 2 can be statistically represented using the likelihood function. It is equivalent to Gaussian noise probability distribution (Eq. 3). <br/>
+The multivariable function described in Eq. 1 can be statistically represented using the likelihood function. It is equivalent to Gaussian noise probability distribution (Eq. 2). <br/>
 
-![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/likelihood.png) Eq. 3 <br/>
+![equation](https://github.com/diloc/Color_correction/blob/64641311ebcfd22add59b5f9db0430e8ccd500d0/equations/likelihood.png)               Eq. 2 <br/>
 
 
 ### Priors: Reflectance & Illuminant: 
-We created an **image dataset** to get the reflectance and illuminant prior distributions. It has images of green fabric pieces on pots and Macbeth colorChecker charts. They were illuminated using D65 standard illuminant.. <br/>
+We created an **image dataset** to get the reflectance and illuminant prior distributions. It has images of green fabric pieces on pots and Macbeth colorChecker charts. They were illuminated using D65 standard illuminant. <br/>
 
-![equation](https://github.com/diloc/Color_correction/blob/67d3eb7d24be12a07f11351454e3983ae2ba2498/equations/priorReflect.png) <br/>
+![equation](https://github.com/diloc/Color_correction/blob/67d3eb7d24be12a07f11351454e3983ae2ba2498/equations/priorReflect.png)               Eq. 3 <br/>
 As the illumation is uniform over a pixel class the probability distribution is given by:<br/>
-![equation](https://github.com/diloc/Color_correction/blob/b99b19f530fbd06e94a81c221153e5a50614ace0/equations/priorIllum.png) <br/>
-
-### Posterior
-It is possible to analytically calculate the posterior distribution using the Bayes' rule as the prior is a conjugate prior for the likelihood function. The posterior distribution is given by:
-$$P(L|Z)=\prod_{i=1}^{n} \int \frac{1}{\sqrt{2\pi \sigma^2}}  exp⁡\biggl(-\frac{(z_i-lr_i)^2}{2\sigma^2}\biggr) \frac{1}{\sqrt{2\pi \tau^2}}  exp⁡\biggl(-\frac{(r_i-\mu)^2}{2\tau^2}\biggr) d r_i $$ <br/>
-
+![equation](https://github.com/diloc/Color_correction/blob/b99b19f530fbd06e94a81c221153e5a50614ace0/equations/priorIllum.png)               Eq. 4 <br/>
 
 ### Maximum a posteriori 
-We estimate the illumination value when the posterior distribution reaches the highest value.
+We estimate the illumination value when the posterior distribution reaches the highest value. <br/>
 
-$$  \hat{l}_{MAP} =\underset{l}{\operatorname{argmax}}  P(L|Z) = \frac{\sum_{i=1}^{n}z_i} {n \mu} $$
-
+![equation](https://github.com/diloc/Color_correction/blob/d017b24942fae440ff7fccf4500cfc8ea158f8c6/equations/MAP.png)               Eq. 5 <br/>
 ## Resources
 
 
