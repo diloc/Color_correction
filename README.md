@@ -42,7 +42,7 @@ $$P(L_{ck}|Z_{ck})=\prod_{i=1}^{n} \int \frac{p(z_{cki}|l_{ck}, r_{cki})p(r_{cki
 ### Maximum a posteriori 
 We estimate the illumination value when the posterior distribution reaches the highest value.
 
-$$\hat{l}_{MAP} = p(L_{ck}|Z_{ck})$$
+$$\hat{l}_{MAP} = P(L_{ck}|Z_{ck})$$
 
 ## Resources
 
