@@ -1,25 +1,25 @@
 # ColorBayes Bayesian color constancy
 
 
-Our goal is to correct the local color distortion on plant phenotyping images caused by non-uniform illumination. The corrected image will show the colors of individual plants as if they were taken under the same standard illuminant (D65). This color constancy approach has two main steps. The first step is to estimate an unknown illuminant's color and spatial distribution that causes the local color distortion. For this step, it is required a training dataset (ground truth), observed image data. Also, it is used the Bayes' rule and the maximum a posteriori (MAP). The second step is to transform the observed image using the chromaticity adaptation method.
+We aim to correct the local colour distortion on plant phenotyping images caused by non-uniform illumination. The corrected image will show the colours of individual plants as if they were taken under the same standard illuminant (D65). This colour constancy approach has two main steps. The first step is to estimate an unknown illuminant's colour and spatial distribution that causes the local colour distortion. For this step, it is required a training dataset (ground truth), and observed image data. Also, it is used the Bayes' rule and the maximum a posteriori (MAP). The second step is transforming the observed image using the chromaticity adaptation method.
 
 
 <figure>
   <img src="https://github.com/diloc/Color_correction/blob/main/images/Figure_2_ColorLight_distribution4.png">
   <figcaption>
-  Figure 1 Light environment characteristics in the HTPP system. (a) A top-view image capturing one hundred and forty-eight pots and twelve Macbeth ColorCheckers, illustrating non-uniform illumination. (b) Spatial distribution of the illumination color on the plant phenotyping scene. (c) Illumination color distribution on the Chromaticity diagram using the 1931 CIE colorimetric system coordinates. (d) Spectral Irradiance at (x = 20 cm and y = 20 cm) and (x = 0 cm and y = 6 cm), the wavelength range is from 325 nm to 785 nm on the horizontal axis and the spectral irradiance [μW cm-2 nm-1] on the vertical axis. Two peaks represent the primary emission LED lights at blue (450 nm) and red (630 nm) and a curve plateau between these peaks (550 - 600 nm).
+  Figure 1 Light environment characteristics in the HTPP system. (a) A top-view image capturing one hundred and forty-eight pots and twelve Macbeth ColorCheckers, illustrating non-uniform illumination. (b) Spatial distribution of the illumination colour on the plant phenotyping scene. (c) Illumination colour distribution on the Chromaticity diagram using the 1931 CIE colourimetric system coordinates. (d) Spectral Irradiance at (x = 20 cm and y = 20 cm) and (x = 0 cm and y = 6 cm), the wavelength range is from 325 nm to 785 nm on the horizontal axis and the spectral irradiance [μW cm-2 nm-1] on the vertical axis. Two peaks represent the primary emission LED lights at blue (450 nm) and red (630 nm), and a curve plateau between these peaks (550 - 600 nm).
   </figcaption>
 </figure>
 
 ## Description
 
-Our methods relies on the following assumptions:
-- An observed image $(5105 x 3075 pixels)$ comprises three independent colour channels (c =R,G,B).
-- The reflectance $r_cj$ is a random variable at the location $j=0,1,2,…,m$ , and colour channel c. Two adjacent reflectances are independent of each other, and the joint probability is given by $p(r_cj,r_cl )=p(r_cj )p(r_cl )$. Based on the same assumption, all reflectance are independent events with joint probability $\prod_{j=1}^{m} \ p(r_{cj})$.
-- The illuminant $l_{cj}$ is also a random variable at the location $j=0,1,2,…,n$, and colour channel $c$.
-- The illumination and the reflectance are statistically independent of each other $p(L_cj,R_cj )=p(L_cj )p(R_cj )$.
-- An image is divided into an m number of small images which correspond to individual pot areas A_p where the index $p=0,1,2,…,m$ indicates the number of pot areas. It means that each pot area $A_p$ has a predetermined n number of pixels $Z_{cp}=\left\{z_{cph}\right\}$ at the location $h=0,1,2,…,q$. Also, the reflectance $R_{cp}=\left\{z_{cph}\right\}$  and illuminant $L_{cp}=\left\{l_{cph}\right\}$ associated with each pixel within a pot area share the same location h.
-- The illuminant is constant for all pixels within a pot area A_p, meaning,  $l_{cp}=l_{cph}$ and $L_{cp}=\left\{l_{cp}\right\}$. Then, the probability distribution of the illuminant is uniform, $p(l_{cp} )=u_{cp}$, where $u_{cp}$ is a constant value. However, two adjacent pot area illuminants are independent of each other $p(l_{cp},l_{cq})=p(l_{cp} )p(l_{cq} )$
+Our method relies on the following assumptions:
+1. An observed image (5105 x 3075 pixels) comprises three independent colour channels (𝑐 = 𝑅, 𝐺, 𝐵).
+2. The reflectance $$𝑟_𝑐𝑗$$ is a random variable at the location 𝑗 = 0,1,2, …,𝑚, and colour channel c. Two adjacent reflectances are independent of each other, and the joint probability is given by $$𝑝(𝑟_𝑐𝑗, 𝑟_𝑐𝑙) = 𝑝(𝑟_𝑐𝑗)𝑝(𝑟_𝑐𝑙)$$. Based on the same assumption, all reflectance are independent events with joint probability $$ 𝑝(𝑅_𝑐) = \prod_{j=1}^{\m} 𝑝(𝑟_𝑐𝑗)}$$.
+3. The illuminant 𝑙𝑐𝑗 is also a random variable at the location 𝑗 = 0,1,2, …, 𝑛, and colour channel c.
+4. The illumination and the reflectance are statistically independent of each other 𝑝(𝐿𝑐𝑗, 𝑅𝑐𝑗) = 𝑝(𝐿𝑐𝑗)𝑝(𝑅𝑐𝑗).
+5. An image is divided into an m number of small images corresponding to individual pot areas 𝐴𝑝 where the index 𝑝 = 0,1,2, … , 𝑚 indicates the number of pot areas. It means that each pot area 𝐴𝑝 has a predetermined n number of pixels 𝑍𝑐𝑝 = {𝑧𝑐𝑝ℎ} at the location ℎ = 0,1,2, … , 𝑞. Also, the reflectance 𝑅𝑐𝑝 = {𝑟𝑐𝑝ℎ} and illuminant 𝐿𝑐𝑝 = {𝑙𝑐𝑝ℎ} associated with each pixel within a pot area share the same location ℎ.
+6. The illuminant is constant for all pixels within a pot area 𝐴𝑝, meaning, 𝑙𝑐𝑝 = 𝑙𝑐𝑝ℎ and 𝐿𝑐𝑝 = {𝑙𝑐𝑝}. Then, the probability distribution of the illuminant is uniform, 𝑝(𝑙𝑐𝑝) = 𝑢𝑐𝑝, where 𝑢𝑐𝑝 is a constant value. However, two adjacent pot area illuminants are independent of each other 𝑝(𝑙𝑐𝑝, 𝑙𝑐𝑞) = 𝑝(𝑙𝑐𝑝)𝑝(𝑙𝑐𝑞).
 
 ### Likelihood: 
 The likelihood of the pixel class is given the illuminant and reflectance and follows a normal distribution. <br/>
