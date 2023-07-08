@@ -15,7 +15,7 @@ We aim to correct the local colour distortion on plant phenotyping images caused
 
 Our method relies on the following assumptions:
 1. An observed image (5105 x 3075 pixels) comprises three independent colour channels (𝑐 = 𝑅, 𝐺, 𝐵).
-2. The reflectance $𝑟_𝑐𝑗$ is a random variable at the location 𝑗 = 0,1,2, …,𝑚, and colour channel c. Two adjacent reflectances are independent of each other, and the joint probability is given by $$𝑝(𝑟_𝑐𝑗, 𝑟_𝑐𝑙) = 𝑝(𝑟_𝑐𝑗)𝑝(𝑟_𝑐𝑙)$$. Based on the same assumption, all reflectance are independent events with joint probability $$ 𝑝(𝑅_𝑐) = \prod_{j=1}^{\m} 𝑝(𝑟_𝑐𝑗)}$$.
+2. The reflectance $𝑟_𝑐𝑗$ is a random variable at the location 𝑗 = 0,1,2, …,𝑚, and colour channel c. Two adjacent reflectances are independent of each other, and the joint probability is given by $𝑝(𝑟_𝑐𝑗, 𝑟_𝑐𝑙) = 𝑝(𝑟_𝑐𝑗)𝑝(𝑟_𝑐𝑙)$. Based on the same assumption, all reflectance are independent events with joint probability $ 𝑝(𝑅_𝑐) = \prod_{j=1}^{\m} 𝑝(𝑟_𝑐𝑗)$.
 3. The illuminant 𝑙𝑐𝑗 is also a random variable at the location 𝑗 = 0,1,2, …, 𝑛, and colour channel c.
 4. The illumination and the reflectance are statistically independent of each other 𝑝(𝐿𝑐𝑗, 𝑅𝑐𝑗) = 𝑝(𝐿𝑐𝑗)𝑝(𝑅𝑐𝑗).
 5. An image is divided into an m number of small images corresponding to individual pot areas 𝐴𝑝 where the index 𝑝 = 0,1,2, … , 𝑚 indicates the number of pot areas. It means that each pot area 𝐴𝑝 has a predetermined n number of pixels 𝑍𝑐𝑝 = {𝑧𝑐𝑝ℎ} at the location ℎ = 0,1,2, … , 𝑞. Also, the reflectance 𝑅𝑐𝑝 = {𝑟𝑐𝑝ℎ} and illuminant 𝐿𝑐𝑝 = {𝑙𝑐𝑝ℎ} associated with each pixel within a pot area share the same location ℎ.
