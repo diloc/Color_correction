@@ -23,19 +23,20 @@ Our method relies on the following assumptions:
 
 ### Likelihood: 
 The likelihood of the pixel class is given the illuminant and reflectance and follows a normal distribution. <br/>
-$$p(z_{cki}│l_{cki},r_{cki})= \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \sigma_{ck}^2}}  exp⁡\biggl(-\frac{(z_{cki}-l_{ck}r_{cki})^2}{2\sigma_{ck}^2}\biggr)$$  
+$$p(z_{cki}│l_{cki},r_{cki})= \frac{1}{\sqrt{2\pi \sigma_{ck}^2}}  exp⁡\biggl(-\frac{(z_{cki}-l_{ck}r_{cki})^2}{2\sigma_{ck}^2}\biggr)$$  
 
 
 ### Priors: Reflectance & Illuminant: 
 We created an **image dataset** to get the reflectance and illuminant prior distributions. It has images of green fabric pieces on pots and Macbeth colorChecker charts. They were illuminated using D65 standard illuminant.. <br/>
 
-$$P(r_{cki})= \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \tau_{ck}^2}}  exp⁡\biggl(-\frac{(r_i-\mu_{ck})^2}{2\tau_{ck}^2}\biggr)$$ <br/>
-As the illumation is uniform over a pixel class the probability distribution is given by:
+$$P(r_{cki})= \frac{1}{\sqrt{2\pi \tau_{ck}^2}}  exp⁡\biggl(-\frac{(r_i-\mu_{ck})^2}{2\tau_{ck}^2}\biggr)$$ <br/>
+
+As the illumination is uniform over a pixel class, the probability distribution is given by:
 $$p(l_{ck})=u_{ck}$$ <br/>
 
 ### Posterior
 It is possible to analytically calculate the posterior distribution using the Bayes' rule as the prior is a conjugate prior for the likelihood function. The posterior distribution is given by:
-$$P(L_{ck}|Z_{ck})=\prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \sigma_{ck}^2}}  exp⁡\biggl(-\frac{(z_{cki}-\mu_{ck}l_{ck})^2}{2\sigma_{ck}^2}\biggr) \frac{1}{\sqrt{2\pi \tau_{ck}^2}}  exp⁡\biggl(-\frac{(r_{cki}-\mu_{ck})^2}{2\tau_{ck}^2}\biggr) $$ <br/>
+$$P(L_{ck}|Z_{ck})=\prod_{i=1}^{n} \int \frac{p(z_{cki}|l_{lck}, r_{cki})p(z_{cki}) pl(l_{ck})}  {p(z_{cki})} dr_{cki} $$ <br/>
 
 
 ### Maximum a posteriori 
