@@ -36,7 +36,7 @@ $$p(l_{ck})=u_{ck}$$ <br/>
 
 ### Posterior
 It is possible to analytically calculate the posterior distribution using the Bayes' rule as the prior is a conjugate prior for the likelihood function. The posterior distribution is given by:
-$$P(L_{ck}|Z_{ck})=\prod_{i=1}^{n} \int \frac{p(z_{cki}|l_{lck}, r_{cki})p(z_{cki}) pl(l_{ck})}  {p(z_{cki})} dr_{cki} $$ <br/>
+$$P(L_{ck}|Z_{ck})=\prod_{i=1}^{n} \int \frac{p(z_{cki}|l_{ck}, r_{cki})p(r_{cki}) pl(l_{ck})}  {p(z_{cki})} dr_{cki} $$ <br/>
 
 
 ### Maximum a posteriori 
